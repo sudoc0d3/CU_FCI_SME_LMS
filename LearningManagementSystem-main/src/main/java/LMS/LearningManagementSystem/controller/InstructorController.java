@@ -332,12 +332,11 @@ public class InstructorController {
         Course course = courseRepository.findById(courseid)
                 .orElseThrow(() -> new RuntimeException("Course not found"));
 
-        // Retrieve all lessons associated with the course
+        // Get all quiz logs for the specified student in the specified course
         List<QuizLog> quizLogs = quizLogRepository.findAll().stream()
-                .filter(quizLog -> Objects.equals(quizLog.getQuiz().getCourse().getId(), course.getId()))
+                .filter(quizLog -> Objects.equals(quizLog.getQuiz().getCourse().getId(), course.getId()) &&
+                        Objects.equals(quizLog.getStudent().getId(), student.getId()))
                 .toList();
-
-        quizLogs.stream().filter(quizLog -> Objects.equals(quizLog.getStudent().getId(), student.getId())).toList();
 
         // Retrieve all attendance records for the specific student and course lessons
         Map<String, Integer> studentGrades = new HashMap<>();
