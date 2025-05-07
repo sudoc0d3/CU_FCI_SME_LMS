@@ -5,6 +5,16 @@ This Java-Based Learning Management System (LMS) is a web-based application desi
 and organization of online courses, assessments, and performance tracking. It provides a comprehensive solution for students, instructors, 
 and admins to interact with the platform effectively, fulfilling specific user needs.
 
+## Email Configuration Setup
+
+### Initial Setup
+1. Navigate to `src/main/resources/`
+2. Copy `mail-config.properties.template` to `mail-config.properties`
+3. Update the following properties in `mail-config.properties`:
+   ```properties
+   spring.mail.username=your-gmail-address
+   spring.mail.password=your-gmail-app-password
+
 ## Project Structure
 ```
 LMS_Project/
