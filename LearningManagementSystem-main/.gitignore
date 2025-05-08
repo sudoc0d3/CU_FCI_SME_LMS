@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Maven ###
+src/main/resources/mail-config.properties
+
 ### STS ###
 .apt_generated
 .classpath
