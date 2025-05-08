@@ -14,6 +14,8 @@ import java.util.*;
 
 @Service
 public class StudentService {
+    private static final String STUDENT_NOT_FOUND = "Student not found";
+    private static final String QUIZ_NOT_FOUND = "Quiz not found";
 
     private final StudentRepository studentRepository;
     private final QuizRepository quizRepository;
@@ -35,8 +37,8 @@ public class StudentService {
     }
 
     public Quiz getQuiz(Integer quizId, Integer studentId) {
-        Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalArgumentException("Student not found"));
-        Quiz quiz = quizRepository.findById(quizId).orElseThrow(() -> new IllegalArgumentException("Quiz not found."));
+        Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalArgumentException(STUDENT_NOT_FOUND));
+        Quiz quiz = quizRepository.findById(quizId).orElseThrow(() -> new IllegalArgumentException(QUIZ_NOT_FOUND));
 
         return quiz;
     }
@@ -44,9 +46,9 @@ public class StudentService {
     public String takeQuiz(Integer studentId, Integer quizId, List<String> answers) {
         // Retrieve student and quiz
         Student student = studentRepository.findById(studentId)
-                .orElseThrow(() -> new IllegalArgumentException("Student not found"));
+                .orElseThrow(() -> new IllegalArgumentException(STUDENT_NOT_FOUND));
         Quiz quiz = quizRepository.findById(quizId)
-                .orElseThrow(() -> new IllegalArgumentException("Quiz not found"));
+                .orElseThrow(() -> new IllegalArgumentException(QUIZ_NOT_FOUND));
 
         // Retrieve the existing QuizLog
         QuizLog attempt = quizLogRepository.findByStudentIdAndQuizId(studentId, quizId);
@@ -83,9 +85,9 @@ public class StudentService {
 
     public String getQuizWithRandomQuestions(Integer quizId, Integer studentId) {
         Student student = studentRepository.findById(studentId)
-                .orElseThrow(() -> new IllegalArgumentException("Student not found"));
+                .orElseThrow(() -> new IllegalArgumentException(STUDENT_NOT_FOUND));
         Quiz quiz = quizRepository.findById(quizId)
-                .orElseThrow(() -> new IllegalArgumentException("Quiz not found"));
+                .orElseThrow(() -> new IllegalArgumentException(QUIZ_NOT_FOUND));
 
         // Check if a QuizLog already exists for this student and quiz
         QuizLog existingLog = quizLogRepository.findByStudentIdAndQuizId(studentId, quizId);
