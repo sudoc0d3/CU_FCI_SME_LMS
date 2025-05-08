@@ -73,7 +73,7 @@ public class StudentService {
         attempt.setAttemptDate(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
         String feedback = "Your score in " + quiz.getTitle() + " is " + score + " out of " + quiz.getTotalGrade() +
                 " in " + quiz.getCourse().getCourseTitle();
-        notificationService.createNotification(studentId, Role.Student, feedback);
+        notificationService.createNotification(studentId, Role.STUDENT, feedback);
         attempt.setFeedback(feedback);
         quizLogRepository.save(attempt);
 

@@ -19,7 +19,7 @@ public class AdminService {
     }
 
     public void addStudent(String name, String email, String password) {
-        Student newStudent = new Student (name, email, password, Role.Student);
+        Student newStudent = new Student (name, email, password, Role.STUDENT);
         studentRepository.save(newStudent); // Save the student to the database
         System.out.println("Student Added Successfully");
     }

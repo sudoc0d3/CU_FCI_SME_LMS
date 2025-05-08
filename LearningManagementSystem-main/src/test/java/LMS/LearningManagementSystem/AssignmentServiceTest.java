@@ -174,6 +174,6 @@ class AssignmentServiceTest {
         assertEquals(95, log.getGrade());
         verify(assignmentLogRepository, times(1)).save(log);
         verify(notificationService, times(1))
-                .createNotification(eq(2026), eq(Role.Student), contains("Your grade is: 95"));
+                .createNotification(eq(2026), eq(Role.STUDENT), contains("Your grade is: 95"));
     }
 }

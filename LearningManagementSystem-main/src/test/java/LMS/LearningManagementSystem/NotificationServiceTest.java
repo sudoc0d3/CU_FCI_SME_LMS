@@ -45,7 +45,7 @@ class NotificationServiceTest {
     void testGetUnReadNotifications() {
         // Arrange
         int userId = 1;
-        Role userType = Role.Student;
+        Role userType = Role.STUDENT;
         Notification notification = new Notification();
         notification.setUserId(userId);
         notification.setUserType(userType);
@@ -66,7 +66,7 @@ class NotificationServiceTest {
     void testGetAllNotifications() {
         // Arrange
         int userId = 1;
-        Role userType = Role.Student;
+        Role userType = Role.STUDENT;
         Notification notification1 = new Notification();
         notification1.setUserId(userId);
         notification1.setUserType(userType);
@@ -149,7 +149,7 @@ class NotificationServiceTest {
     void testCreateNotification() {
         // Arrange
         int userId = 1;
-        Role userType = Role.Student;
+        Role userType = Role.STUDENT;
         String message = "Your grade is: 95";
 
         // Create a student

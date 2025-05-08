@@ -137,7 +137,7 @@ class StudentServiceTest {
         assertNotNull(feedback, "Feedback should not be null");
         assertTrue(feedback.contains("Your score"), "Feedback should contain score");
         verify(quizLogRepository, times(1)).save(quizLog);
-        verify(notificationService, times(1)).createNotification(anyInt(), eq(Role.Student), anyString());
+        verify(notificationService, times(1)).createNotification(anyInt(), eq(Role.STUDENT), anyString());
     }
 
     @Test

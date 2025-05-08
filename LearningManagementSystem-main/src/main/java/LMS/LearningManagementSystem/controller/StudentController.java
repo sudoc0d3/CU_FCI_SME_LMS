@@ -68,25 +68,25 @@ public class StudentController {
 
                 // Send notification to the student for successful enrollment
                 String successMessageForStudent = "Enrollment successful for course: " + course.getCourseTitle();
-                notificationService.createNotification(student.getId(), Role.Student, successMessageForStudent);
+                notificationService.createNotification(student.getId(), Role.STUDENT, successMessageForStudent);
 
                 // Send notification to the instructor
                 Instructor instructor = course.getInstructor();
                 String successMessageForInstructor = "A student (" + student.getName() + ") has enrolled in your course: " + course.getCourseTitle();
-                notificationService.createNotification(instructor.getId(), Role.Instructor, successMessageForInstructor);
+                notificationService.createNotification(instructor.getId(), Role.INSTRUCTOR, successMessageForInstructor);
 
                 return successMessageForStudent;
             } else {
                 // Send notification to the student for failure (course not found)
                 String failureMessage = "Enrollment failed: Course not found.";
-                notificationService.createNotification(studentId, Role.Student, failureMessage);
+                notificationService.createNotification(studentId, Role.STUDENT, failureMessage);
 
                 return failureMessage;
             }
         } else {
             // Send notification for failure (student not found)
             String failureMessage = "Enrollment failed: Student not found.";
-            notificationService.createNotification(studentId,Role.Student, failureMessage);
+            notificationService.createNotification(studentId,Role.STUDENT, failureMessage);
 
             return failureMessage;
         }
@@ -161,7 +161,7 @@ public class StudentController {
     public ResponseEntity<List<Notification>> getAllNotifications(@RequestParam int studentId) {
         try {
             //return notificationService.getAllNotifications(studentId, Role.Student);
-            List<Notification> notifications = notificationService.getAllNotifications(studentId, Role.Student);
+            List<Notification> notifications = notificationService.getAllNotifications(studentId, Role.STUDENT);
             return ResponseEntity.ok(notifications);
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());
@@ -171,7 +171,7 @@ public class StudentController {
     public ResponseEntity<List<Notification>> getUnReadNotifications(@RequestParam int studentId) {
         //return notificationService.getUnReadNotifications(studentId,Role.Student);
         try {
-            List<Notification> notifications = notificationService.getUnReadNotifications(studentId, Role.Student);
+            List<Notification> notifications = notificationService.getUnReadNotifications(studentId, Role.STUDENT);
             return ResponseEntity.ok(notifications);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());

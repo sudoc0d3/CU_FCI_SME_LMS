@@ -60,7 +60,7 @@ public class InstructorService {
         String notification = quiz.getTitle() + "has been added to " + quiz.getCourse().getCourseTitle();
         List<Student> students = course.getEnrolledStudents();
         for(Student student : students){
-            notificationService.createNotification(student.getId(),Role.Student, notification);
+            notificationService.createNotification(student.getId(),Role.STUDENT, notification);
         }
     }
 
