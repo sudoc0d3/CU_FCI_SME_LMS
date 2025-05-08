@@ -110,7 +110,7 @@ public class AssignmentService {
         // Notify the student about the graded assignment
         String message = "Your assignment for course with ID : " + crs.getCourseTitle() +
                 " has been graded. Your grade is: " + grade + ".";
-        notificationService.createNotification(log.getStudentId(), Role.Student, message);
+        notificationService.createNotification(log.getStudentId(), Role.STUDENT, message);
     }
 
     private Integer extractStudentIdFromToken(String token) {

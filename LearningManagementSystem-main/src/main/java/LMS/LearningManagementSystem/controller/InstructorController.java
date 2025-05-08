@@ -251,7 +251,7 @@ public class InstructorController {
     public ResponseEntity<List<Notification>> getAllNotifications(@RequestParam int instructorId) {
         //return notificationService.getAllNotifications(instructorId,Role.Instructor);
         try {
-            List<Notification> notifications = notificationService.getAllNotifications(instructorId, Role.Student);
+            List<Notification> notifications = notificationService.getAllNotifications(instructorId, Role.STUDENT);
             return ResponseEntity.ok(notifications);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());
@@ -261,7 +261,7 @@ public class InstructorController {
     public ResponseEntity<List<Notification>> getUnReadNotifications(@RequestParam int instructorId) {
         //return notificationService.getUnReadNotifications(instructorId,Role.Instructor);
         try {
-            List<Notification> notifications = notificationService.getUnReadNotifications(instructorId, Role.Student);
+            List<Notification> notifications = notificationService.getUnReadNotifications(instructorId, Role.STUDENT);
             return ResponseEntity.ok(notifications);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());
