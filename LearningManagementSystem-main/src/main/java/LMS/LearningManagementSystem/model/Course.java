@@ -75,9 +75,5 @@ public class Course {
         enrolledStudents.add(student);
     }
 
-    public void setMediaFiles(ArrayList<Object> objects) {
-    }
-
-    public void setId(Integer courseId) {
-    }
+    
 }
