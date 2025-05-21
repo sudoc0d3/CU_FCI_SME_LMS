@@ -9,6 +9,8 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "courses")
+@Getter
+@Setter
 public class Course {
     @Getter
     @Id

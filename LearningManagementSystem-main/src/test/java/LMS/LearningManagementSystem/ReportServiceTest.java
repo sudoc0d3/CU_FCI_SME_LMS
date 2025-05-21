@@ -5,6 +5,8 @@ import LMS.LearningManagementSystem.model.*;
 import LMS.LearningManagementSystem.repository.AssignmentLogRepository;
 import LMS.LearningManagementSystem.repository.AssignmentRepository;
 import LMS.LearningManagementSystem.repository.AttendanceRepository;
+import LMS.LearningManagementSystem.repository.QuizLogRepository;
+import LMS.LearningManagementSystem.repository.QuizRepository;
 import LMS.LearningManagementSystem.repository.StudentRepository;
 import LMS.LearningManagementSystem.service.ReportService;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,6 +35,12 @@ class ReportServiceTest {
 
     @Mock
     private AssignmentRepository assignmentRepository;
+
+    @Mock
+    private QuizRepository quizRepository;
+
+    @Mock
+    private QuizLogRepository quizLogRepository;
 
     @InjectMocks
     private ReportService reportService;
@@ -71,6 +79,23 @@ class ReportServiceTest {
         assignmentLog.setGrade(90);
         assignmentLog.setStudentId(student.getId());
         assignmentLog.setAssignment(assignment);
+
+
+        Quiz quiz = new Quiz();
+        quiz.setId(1);
+        quiz.setTotalGrade(100);
+        
+        QuizLog quizLog = new QuizLog();
+        quizLog.setQuiz(quiz);
+        quizLog.setScore(85);
+        quizLog.setStudent(student);
+        
+        // Add mock behaviors
+        when(quizRepository.findAllByCourseId(anyInt()))
+            .thenReturn(Arrays.asList(quiz));
+            
+        when(quizLogRepository.findAllByStudentIdAndQuizIdIn(anyInt(), anyList()))
+            .thenReturn(Arrays.asList(quizLog));
     }
 
     @Test
@@ -126,7 +151,7 @@ class ReportServiceTest {
         int totalGrades = reportService.calculateTotalGrades(student.getId(), 1);
 
         // Assert: Verify the result
-        assertEquals(90, totalGrades); // As per the setup, the total grade should be 90
+        assertEquals(175, totalGrades); // As per the setup, the total grade should be 90
         verify(assignmentRepository, times(1)).findAllByCourseId(1);
         verify(assignmentLogRepository, times(1)).findAllByStudentIdAndAssignmentIdIn(student.getId(), Arrays.asList(assignment.getId()));
 

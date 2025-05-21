@@ -1,9 +1,13 @@
 package LMS.LearningManagementSystem.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "assignments")
+@Getter
+@Setter
 public class Assignment {
 
     @Id
@@ -26,37 +30,37 @@ public class Assignment {
         this.grade = grade;
     }
 
-    // Getters and Setters
-    public Integer getId() {
-        return id;
-    }
+    // // Getters and Setters
+    // public Integer getId() {
+    //     return id;
+    // }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    // public void setId(Integer id) {
+    //     this.id = id;
+    // }
 
-    public Integer getCourseId() {
-        return courseId;
-    }
+    // public Integer getCourseId() {
+    //     return courseId;
+    // }
 
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
-    }
+    // public void setCourseId(Integer courseId) {
+    //     this.courseId = courseId;
+    // }
 
-    public String getPdfPath() {
-        return pdfPath;
-    }
+    // public String getPdfPath() {
+    //     return pdfPath;
+    // }
 
-    public void setPdfPath(String pdfPath) {
-        this.pdfPath = pdfPath;
-    }
+    // public void setPdfPath(String pdfPath) {
+    //     this.pdfPath = pdfPath;
+    // }
 
-    public Integer getGrade() {
-        return grade;
-    }
+    // public Integer getGrade() {
+    //     return grade;
+    // }
 
-    public void setGrade(Integer grade) {
-        this.grade = grade;
-    }
+    // public void setGrade(Integer grade) {
+    //     this.grade = grade;
+    // }
 
 }
